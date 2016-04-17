@@ -132,3 +132,27 @@ You can subscribe to an observable defined by the I18nService which will send a 
       obs.unsubscribe();
     });
 
+Or, using a promise:
+
+    this.loadAndRender('hello-world', s => this.text = s);
+    
+    loadAndRender(code: string, doRenderCallback) {
+      if (!code) {
+        return;
+      }
+
+      this.i18n.tPromise(code)
+
+        .then((val: string) => {
+          doRenderCallback(val);
+        })
+
+        .catch((val: string) => {
+          doRenderCallback(' ');
+          var obs = this.i18n.alerts$.subscribe(b => {
+            doRenderCallback(this.i18n.t(code));
+            obs.unsubscribe();
+          });
+        });
+    }
+
