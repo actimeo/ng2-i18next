@@ -115,3 +115,20 @@ Two directives are available:
 
 ####In the template:
     <p>{{i18n.t('hello-world')}}</p>
+
+###5. Race at init time
+
+The i18next module takes some time to load its locales files via XHR and initialize.
+
+For this reason, it is possible that an early call to I18nService.t() does not return a correct value because the i18next module is not yet initialized.
+
+You can subscribe to an observable defined by the I18nService which will send a message when initialization is done.
+
+    // case when i18next is already initialized
+    this.text = this.i18n.t('hello-world');
+    // case when i18next is not yet initialized
+    var obs = this.i18n.alerts$.subscribe(b => {
+      this.text = this.i18n.t('hello-world');
+      obs.unsubscribe();
+    });
+
