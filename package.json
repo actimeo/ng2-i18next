@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "angular2": "2.0.0-beta.14",
+    "rxjs": "5.0.0-beta.2",
+    "es6-shim": "^0.35.0",
+    "reflect-metadata": "0.1.2",
+    "zone.js": "^0.6.6"
+  },
+  "description": "use i18next with Angular2",
+  "devDependencies": {
+    "typescript": "^1.7.5"
+  },
+  "license": "MIT",
+  "maintainers": [
+    {
+      "email": "pmartin@actimeo.fr",
+      "name": "Philippe MARTIN"
+    }
+  ],
+  "name": "ng2-i18next",
+  "peerDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actimeo/ng2-i18next.git"
+  },
+  "scripts": {
+    "watch": "tsc -p src -w",
+    "build": "rm -rf lib && tsc -p src"
+  },
+  "version": "0.0.1"
+}
