@@ -5,6 +5,8 @@ Use i18next with Angular2.
 
 This implementation uses the i18next XHR backend to read locales from XHR and the browser language detector module to detect language from the browser language preferences.
 
+A demo is available on [github: ng2-i18next-demo](https://github.com/actimeo/ng2-i18next-demo)
+
 ## A. Install 
 
 > This procedure is based on a fresh angular-cli install.
