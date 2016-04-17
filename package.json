@@ -4,7 +4,11 @@
     "rxjs": "5.0.0-beta.2",
     "es6-shim": "^0.35.0",
     "reflect-metadata": "0.1.2",
-    "zone.js": "^0.6.6"
+    "zone.js": "^0.6.6",
+    "i18next": "^2.5.1",
+    "i18next-browser-languagedetector": "^0.2.2",
+    "i18next-xhr-backend": "^0.5.3"
+,
   },
   "description": "use i18next with Angular2",
   "devDependencies": {
