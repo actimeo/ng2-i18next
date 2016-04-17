@@ -30,5 +30,5 @@
     "watch": "tsc -p src -w",
     "build": "rm -rf lib && tsc -p src"
   },
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
