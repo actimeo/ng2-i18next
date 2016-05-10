@@ -3,8 +3,11 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
 
 declare var i18next: any;
-declare var i18nextBrowserLanguageDetector: any;
-declare var i18nextXHRBackend: any;
+
+export class I18nServiceConfig {
+  use: any[];
+  config: any;
+}
 
 /* see I18nDirective for more information */
 @Injectable()
@@ -15,24 +18,24 @@ export class I18nService {
   alerts$: Observable<boolean>;
   private alertsObserver: any;
 
-  constructor() {
+  constructor(private config: I18nServiceConfig) {
     this.init = false;
     this.i18n = i18next;
-    this.alerts$ = new Observable(observer => { 
-	this.alertsObserver = observer; 
-	this.i18n
-	    .use(i18nextXHRBackend)
-	    .use(i18nextBrowserLanguageDetector)
-	    .init(
-		{
-		    detection: { order: ['navigator'] },
-		    fallbackLng: 'en'
-		},
-		(err, t) => {
-		    this.init = true;
-		    this.alertsObserver.next(true);
-		});
-    }).share();      
+    this.alerts$ = new Observable(observer => {
+      this.alertsObserver = observer;
+      let i18nextUse = config.use;
+      if (config.use) {
+        for (let i = 0; i < i18nextUse.length; i++) {
+          this.i18n.use(i18nextUse[i]);
+        }
+      }
+      this.i18n.init(
+        config.config,
+        (err, t) => {
+          this.init = true;
+          this.alertsObserver.next(true);
+        });
+    }).share();
   }
 
   t(s: string, opts: any = undefined) {

@@ -53,11 +53,26 @@ This will also install three i18next packages (i18next, i18next-browser-language
 ##B. Usage
 
 ###1. Inject I18nService at bootstrap time
-The I18nService will initialize the i18next object and load the locales via XHR backend. 
+In this example, the I18nService will initialize the i18next object and load the locales via XHR backend and use browser language detector module. 
  
 
-    import {I18nService} from 'ng2-i18next/ng2-i18next';
-    bootstrap(Ng2MyApp, [I18nService]);
+    import {I18nService, I18nServiceConfig} from 'ng2-i18next/ng2-i18next';
+
+    declare var i18nextBrowserLanguageDetector: any;
+    declare var i18nextXHRBackend: any;
+
+    bootstrap(Ng2I18nextDemoApp, [
+      provide(I18nServiceConfig, {
+        useValue: {
+      	  use: [i18nextBrowserLanguageDetector, i18nextXHRBackend],
+      	  config: {
+            detection: { order: ['navigator'] },
+            fallbackLng: 'en'
+      	  }
+    	}
+      }),
+      I18nService
+    ]);
 
 ###2. Add your locales
 Your locales have to be placed, for each language `<lang>`, in `src/client/locales/<lang>/translation.json` .
