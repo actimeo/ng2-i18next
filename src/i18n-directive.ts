@@ -45,7 +45,7 @@ export class I18nDirective implements AfterContentInit {
         doRenderCallback(' ');
         var obs = this.i18n.alerts$.subscribe(b => {
           doRenderCallback(this.i18n.t(code));
-          obs.unsubscribe();
+	  setTimeout(() => { obs.unsubscribe() }, 0);
         });
       });
   }
