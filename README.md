@@ -142,7 +142,7 @@ You can subscribe to an observable defined by the I18nService which will send a 
     // case when i18next is already initialized
     this.text = this.i18n.t('hello-world');
     // case when i18next is not yet initialized
-    var obs = this.i18n.alerts$.subscribe(b => {
+    var obs = this.i18n.whenReady$.subscribe(b => {
       this.text = this.i18n.t('hello-world');
       obs.unsubscribe();
     });
@@ -164,7 +164,7 @@ Or, using a promise:
 
         .catch((val: string) => {
           doRenderCallback(' ');
-          var obs = this.i18n.alerts$.subscribe(b => {
+          var obs = this.i18n.whenReady$.subscribe(b => {
             doRenderCallback(this.i18n.t(code));
             obs.unsubscribe();
           });

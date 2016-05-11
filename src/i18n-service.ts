@@ -15,14 +15,14 @@ export class I18nService {
   i18n: any;
   private init;
 
-  alerts$: Observable<boolean>;
-  private alertsObserver: any;
+  whenReady$: Observable<boolean>;
+  private whenReadyObserver: any;
 
   constructor(private config: I18nServiceConfig) {
     this.init = false;
     this.i18n = i18next;
-    this.alerts$ = new Observable(observer => {
-      this.alertsObserver = observer;
+    this.whenReady$ = new Observable(observer => {
+      this.whenReadyObserver = observer;
       let i18nextUse = config.use;
       if (config.use) {
         for (let i = 0; i < i18nextUse.length; i++) {
@@ -33,7 +33,7 @@ export class I18nService {
         config.config,
         (err, t) => {
           this.init = true;
-          this.alertsObserver.next(true);
+          this.whenReadyObserver.next(true);
         });
     }).share();
   }
