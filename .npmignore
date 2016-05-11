@@ -1,3 +1,4 @@
 node_modules
-src
+src/compile.ts
+src/tsconfig.json
 lib/compile.*
