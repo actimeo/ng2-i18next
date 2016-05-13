@@ -1,4 +1,4 @@
-import {Directive, Input, Renderer, ElementRef, AfterContentInit} from 'angular2/core';
+import {Directive, Input, Renderer, ElementRef, AfterContentInit} from '@angular/core';
 
 import {I18nService} from './i18n-service';
 
