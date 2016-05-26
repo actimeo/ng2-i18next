@@ -30,12 +30,26 @@ export class I18nDirective implements AfterContentInit {
     });
   }
 
-  loadAndRender(code: string, doRenderCallback) {
-    if (!code) {
+  loadAndRender(content: string, doRenderCallback) {
+    if (!content) {
       return;
     }
+    console.log('content: ' + content);
 
-    this.i18n.tPromise(code)
+    let code: string;
+    let options: {} = {};
+    try {
+      let json = JSON.parse(content);
+      console.log('json: ' + JSON.stringify(json));
+      code = Object.keys(json)[0];
+      options = json[code];
+    } catch (e) {
+      console.log('parsing error: ' + e);
+      code = content;
+    }
+    console.log('code: ' + code);
+    console.log('options: ' + JSON.stringify(options));
+    this.i18n.tPromise(code, options)
 
       .then((val: string) => {
         doRenderCallback(val);
@@ -44,8 +58,8 @@ export class I18nDirective implements AfterContentInit {
       .catch((val: string) => {
         doRenderCallback(' ');
         var obs = this.i18n.whenReady$.subscribe(b => {
-          doRenderCallback(this.i18n.t(code));
-	  setTimeout(() => { obs.unsubscribe() }, 0);
+          doRenderCallback(this.i18n.t(code, options));
+          setTimeout(() => { obs.unsubscribe() }, 0);
         });
       });
   }
