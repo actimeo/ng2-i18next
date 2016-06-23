@@ -1,4 +1,6 @@
 node_modules
-src/compile.ts
-src/tsconfig.json
-lib/compile.*
+src
+.gitignore
+typings
+tsconfig.json
+typings.json
