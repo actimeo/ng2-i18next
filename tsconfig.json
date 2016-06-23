@@ -13,7 +13,6 @@
         "node_modules",
 		"typings",
         "ng2-i18next.js",
-        "ng2-i18next.ts",
         "ng2-i18next.d.ts",
 		"lib"
     ]

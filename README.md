@@ -41,7 +41,6 @@ This will also install three i18next packages (i18next, i18next-browser-language
          }
        },
        'vendor/ng2-i18next': {
-         main: 'lib/ng2-i18next.js'
          format: 'cjs',
          defaultExtension: 'js'
        }                

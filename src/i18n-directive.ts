@@ -1,3 +1,4 @@
+///<reference path="../typings/index.d.ts"/>
 import {Directive, Input, Renderer, ElementRef, AfterContentInit} from '@angular/core';
 
 import {I18nService} from './i18n-service';
