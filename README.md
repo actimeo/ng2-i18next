@@ -78,10 +78,10 @@ In this example, the I18nService will initialize the i18next object and load the
     ]);
 
 ###2. Add your locales
-Your locales have to be placed, for each language `<lang>`, in `src/client/locales/<lang>/translation.json` .
+Your locales have to be placed, for each language `<lang>`, in `src/locales/<lang>/translation.json` .
 
 For example:
-`src/client/locales/en/translation.json` :
+`src/locales/en/translation.json` :
 
     {
       "hello-world": "Hello World! ng2-i18next works!",
@@ -89,7 +89,7 @@ For example:
     }
 
 
-`src/client/locales/fr/translation.json` :
+`src/locales/fr/translation.json` :
 
     {
       "hello-world": "Salut les terriens ! ng2-i18next fonctionne !",
@@ -102,18 +102,18 @@ Two directives are available:
  - `i18n` to replace the contents of a tag with the localization of the given key,
  - `i18n-placeholder` to replace the contents of the `placeholder` attribute with the localization of the given key.
 
-`src/client/app/my-app.ts` :
+`src/app/app.component.ts` :
 
     [...]
     import {I18nDirective} from 'ng2-i18next/ng2-i18next';
     [...]
     @Component({
     [...]
-      templateUrl: 'app/m-app.html',
+      templateUrl: 'app.component.html',
       directives: [I18nDirective]
     })
 
-`src/client/app/my-app.html` :
+`src/app/app.component.html` :
 
     <p i18n="hello-world">i18n does not work!</p>
     <input type="text" i18n-placeholder="what-is-your-name">
