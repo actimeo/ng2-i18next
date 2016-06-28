@@ -5,7 +5,7 @@ Use i18next with Angular2.
 
 This implementation uses the i18next XHR backend to read locales from XHR and the browser language detector module to detect language from the browser language preferences.
 
-A demo is available on [github: ng2-i18next-demo](https://github.com/actimeo/ng2-i18next-demo)
+A demo is available on [github: ng2-i18next-demo-rc3](https://github.com/actimeo/ng2-i18next-demo-rc3)
 
 ## A. Install 
 
@@ -20,35 +20,38 @@ This will also install three i18next packages (i18next, i18next-browser-language
 
      var app = new Angular2App(defaults, {
          vendorNpmFiles: [ 
-             'i18next/**', 
-             'i18next-xhr-backend/**', 
-             'i18next-browser-languagedetector/**', 
-             'ng2-i18next/**'
-        ]});
-###3. Edit your index.html file
+           ...,
+           'i18next/**/*.+(js|js.map)',
+           'i18next-xhr-backend/**/*.+(js|js.map)',
+           'i18next-browser-languagedetector/**/*.+(js|js.map)',
+           'ng2-i18next/**/*.+(js|js.map)'
+         ]});
 
-    [...]
-    <script src="vendor/i18next/i18next.min.js"></script>
-    <script src="vendor/i18next-xhr-backend/i18nextXHRBackend.min.js"></script>
-    <script src="vendor/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
-    [...]
-     <script>
-     System.config({
-       packages: {
-         app: {
-           format: 'register',
-           defaultExtension: 'js'
-         }
-       },
-       'vendor/ng2-i18next': {
-         format: 'cjs',
-         defaultExtension: 'js'
-       }                
+###3. Edit your system-config.ts file
+
+    const map: any = {
+      'ng2-i18next': 'vendor/ng2-i18next',
+      'i18next': 'vendor/i18next/i18next.min.js',
+      'i18nextXHRBackend': 'vendor/i18next-xhr-backend/i18nextXHRBackend.min.js',
+      'i18nextBrowserLanguageDetector': 'vendor/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js'
+    };
+
+    /** User packages configuration. */
+    const packages: any = {
+      'vendor/ng2-i18next': {
+        format: 'cjs',
+        defaultExtension: 'js'
       },
-      map: {
-        'ng2-i18next': 'vendor/ng2-i18next'
-       }
-     });
+      'i18next': { format: 'global' },
+      'i18nextXHRBackend': { format: 'global' },
+      'i18nextBrowserLanguageDetector': { format: 'global' }
+    };
+
+###4. Import the i18next modules from your main component
+
+    import 'i18next';
+    import 'i18nextXHRBackend';
+    import 'i18nextBrowserLanguageDetector';
 
 ##B. Usage
 
