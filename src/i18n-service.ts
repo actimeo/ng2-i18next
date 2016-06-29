@@ -1,4 +1,3 @@
-///<reference path="../typings/index.d.ts"/>
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
