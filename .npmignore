@@ -4,3 +4,4 @@ src
 typings
 tsconfig.json
 typings.json
+lib/compile.*
