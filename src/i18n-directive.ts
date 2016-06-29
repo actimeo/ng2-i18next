@@ -15,11 +15,13 @@ export class I18nDirective implements OnChanges {
   constructor(private i18n: I18nService, private el: ElementRef, private renderer: Renderer) {
   }
 
-  ngOnChanges() {
-    this.updateDirectiveContent();
-  }
+  /* 
+     If the i18next module is initialized, the promise is resolved with the text to display.
 
-  private updateDirectiveContent() {
+     If the i18next module is not yet initialized, the promise is rejected: we subscribe
+     to the i18nextService observable which will alert us when the module is initialized 
+  */
+  ngOnChanges() {
     this.loadAndRender(this.content, (s) => {
       this.renderer.setText(this.el.nativeElement, s);
     });
@@ -43,13 +45,18 @@ export class I18nDirective implements OnChanges {
     } catch (e) {
       code = content;
     }
-
     this.i18n.tPromise(code, options)
-        .then((val: string) => {
-          doRenderCallback(val);
-        })
-        .catch((err: Error) => {
-          console.log('Rendering of value failed. Error: ', err);
+
+      .then((val: string) => {
+        doRenderCallback(val);
+      })
+
+      .catch((val: string) => {
+        doRenderCallback(' ');
+        var obs = this.i18n.whenReady$.subscribe(b => {
+          doRenderCallback(this.i18n.t(code, options));
+          setTimeout(() => { obs.unsubscribe() }, 0);
         });
+      });
   }
 }

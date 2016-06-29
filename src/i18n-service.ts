@@ -1,5 +1,7 @@
 ///<reference path="../typings/index.d.ts"/>
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 
 declare var i18next: any;
 
@@ -12,12 +14,16 @@ export class I18nServiceConfig {
 @Injectable()
 export class I18nService {
   i18n: any;
+  private init;
 
-  whenReady$: Promise<boolean>;
+  whenReady$: Observable<boolean>;
+  private whenReadyObserver: any;
 
   constructor(private config: I18nServiceConfig) {
+    this.init = false;
     this.i18n = i18next;
-    this.whenReady$ = new Promise((resolve, reject) => {
+    this.whenReady$ = new Observable(observer => {
+      this.whenReadyObserver = observer;
       let i18nextUse = config.use;
       if (config.use) {
         for (let i = 0; i < i18nextUse.length; i++) {
@@ -25,15 +31,12 @@ export class I18nService {
         }
       }
       this.i18n.init(
-          config.config,
-          (err, t) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(true);
-            }
-          });
-    });
+        config.config,
+        (err, t) => {
+          this.init = true;
+          this.whenReadyObserver.next(true);
+        });
+    }).share();
   }
 
   t(s: string, opts: any = undefined) {
@@ -41,6 +44,12 @@ export class I18nService {
   }
 
   tPromise(s: string, opts: any = undefined) {
-    return this.whenReady$.then(() => Promise.resolve(this.i18n.t(s, opts)));
+    return new Promise((resolve, reject) => {
+      if (this.init) {
+        resolve(this.i18n.t(s, opts));
+      } else {
+        reject(s);
+      }
+    });
   }
 }
