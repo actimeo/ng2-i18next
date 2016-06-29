@@ -1,3 +1,4 @@
+///<reference path="../typings/index.d.ts"/>
 import {Injectable} from '@angular/core';
 
 declare var i18next: any;
