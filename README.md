@@ -2,7 +2,7 @@
 [![Downloads](http://img.shields.io/npm/dm/ng2-i18next.svg)](https://npmjs.org/package/ng2-i18next)
 
 # ng2-i18next
-Use i18next with Angular2.
+Use i18next, the popular internationalization Javascript library (http://i18next.com/), with Angular2.
 
 A demo is available on [github: ng2-i18next-demo-rc3](https://github.com/actimeo/ng2-i18next-demo-rc3)
 
