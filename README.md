@@ -3,13 +3,12 @@
 # ng2-i18next
 Use i18next with Angular2.
 
-This implementation uses the i18next XHR backend to read locales from XHR and the browser language detector module to detect language from the browser language preferences.
-
 A demo is available on [github: ng2-i18next-demo-rc3](https://github.com/actimeo/ng2-i18next-demo-rc3)
 
 ## A. Install 
 
-> This procedure is based on a fresh angular-cli install.
+> This procedure is based on a fresh angular-cli install and uses the i18next XHR backend to read locales from XHR and the browser language detector module to detect language from the browser language preferences.
+
 
 ### 1. install npm package
     npm install ng2-i18next --save
@@ -55,27 +54,32 @@ This will also install three i18next packages (i18next, i18next-browser-language
 
 ##B. Usage
 
-###1. Inject I18nService at bootstrap time
+###1. Inject I18nService in your main component
 In this example, the I18nService will initialize the i18next object and load the locales via XHR backend and use browser language detector module. 
  
 
     import {I18nService, I18nServiceConfig} from 'ng2-i18next/ng2-i18next';
-
+    
     declare var i18nextBrowserLanguageDetector: any;
     declare var i18nextXHRBackend: any;
 
-    bootstrap(Ng2I18nextDemoApp, [
+    const NG2_I18NEXT_PROVIDERS = [
       provide(I18nServiceConfig, {
         useValue: {
-      	  use: [i18nextBrowserLanguageDetector, i18nextXHRBackend],
-      	  config: {
+          use: [i18nextBrowserLanguageDetector, i18nextXHRBackend],
+          config: {
             detection: { order: ['navigator'] },
             fallbackLng: 'en'
-      	  }
-    	}
+          }
+        }
       }),
       I18nService
-    ]);
+    ];
+
+    @Component({
+      ...
+      providers: [NG2_I18NEXT_PROVIDERS]
+    })
 
 ###2. Add your locales
 Your locales have to be placed, for each language `<lang>`, in `src/locales/<lang>/translation.json` .
@@ -134,7 +138,15 @@ Two directives are available:
 ####In the template:
     <p>{{i18n.t('hello-world')}}</p>
 
-###5. Race at init time
+###5. Pass translation options to i18next
+
+It is possible to pass options to the i18next module with this notation:
+
+    <p i18n='{"not_found_key": {"defaultValue": "a default value via option"}}'></p>
+
+    <p i18n='{"counter": {"count": {{theCounter}}}}'></p>
+
+###6. Race at init time
 
 The i18next module takes some time to load its locales files via XHR and initialize.
 
