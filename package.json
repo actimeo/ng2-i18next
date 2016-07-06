@@ -29,5 +29,5 @@
   "scripts": {
     "prepublish": "npm install --ignore-scripts && typings install && tsc"
   },
-  "version": "0.1.5"
+  "version": "0.1.6"
 }
