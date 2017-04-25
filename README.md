@@ -27,7 +27,7 @@ This will also install three i18next packages (i18next, i18next-browser-language
            'ng2-i18next/**/*.+(js|js.map)'
          ]});
 
-###3. Edit your system-config.ts file
+### 3. Edit your system-config.ts file
 
     const map: any = {
       'ng2-i18next': 'vendor/ng2-i18next',
@@ -47,15 +47,15 @@ This will also install three i18next packages (i18next, i18next-browser-language
       'i18nextBrowserLanguageDetector': { format: 'global' }
     };
 
-###4. Import the i18next modules from your main component
+### 4. Import the i18next modules from your main component
 
     import 'i18next';
     import 'i18nextXHRBackend';
     import 'i18nextBrowserLanguageDetector';
 
-##B. Usage
+## B. Usage
 
-###1. Inject I18nService in your main component
+### 1. Inject I18nService in your main component
 In this example, the I18nService will initialize the i18next object and load the locales via XHR backend and use browser language detector module. 
  
 
@@ -82,7 +82,7 @@ In this example, the I18nService will initialize the i18next object and load the
       providers: [NG2_I18NEXT_PROVIDERS]
     })
 
-###2. Add your locales
+### 2. Add your locales
 Your locales have to be placed, for each language `<lang>`, in `src/locales/<lang>/translation.json` .
 
 For example:
@@ -101,7 +101,7 @@ For example:
       "what-is-your-name": "Comment tu t'appelles ?"
     }
 
-###3. Use the I18nDirective
+### 3. Use the I18nDirective
 Two directives are available:
 
  - `i18n` to replace the contents of a tag with the localization of the given key,
@@ -123,8 +123,8 @@ Two directives are available:
     <p i18n="hello-world">i18n does not work!</p>
     <input type="text" i18n-placeholder="what-is-your-name">
 
-###4. Use the `I18nService` `t()` method
-####In the code:
+### 4. Use the `I18nService` `t()` method
+#### In the code:
 
     [...]
     import {I18nService} from 'ng2-i18next/ng2-i18next';
@@ -136,10 +136,10 @@ Two directives are available:
       [...]
     }
 
-####In the template:
+#### In the template:
     <p>{{i18n.t('hello-world')}}</p>
 
-###5. Pass translation options to i18next
+### 5. Pass translation options to i18next
 
 It is possible to pass options to the i18next module with this notation:
 
@@ -147,7 +147,7 @@ It is possible to pass options to the i18next module with this notation:
 
     <p i18n='{"counter": {"count": {{theCounter}}}}'></p>
 
-###6. Race at init time
+### 6. Race at init time
 
 The i18next module takes some time to load its locales files via XHR and initialize.
 
