@@ -1,23 +1,27 @@
 {
   "dependencies": {
-    "@angular/core": "2.0.0-rc.4",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "0.6.12",
-    "i18next": "^3.3.1",
-    "i18next-browser-languagedetector": "^0.3.0",
-    "i18next-xhr-backend": "^0.6.0"
+    "@angular/core": "6.0.9",
+    "i18next": "^9.0.0",
+    "i18next-browser-languagedetector": "^2.2.0",
+    "i18next-xhr-backend": "^1.4.3",
+    "rxjs": "6.2.2",
+    "zone.js": "0.8.26"
   },
   "main": "ng2-i18next.js",
   "typings": "ng2-i18next.d.ts",
   "description": "use i18next with Angular2",
   "devDependencies": {
-    "typescript": "^1.7.5"
+    "typescript": "^2.7.2"
   },
   "license": "MIT",
   "maintainers": [
     {
       "email": "pmartin@actimeo.fr",
       "name": "Philippe MARTIN"
+    },
+    {
+      "email": "leopold.lieb@usherbrooke.ca",
+      "name": "Léopold Lieb"
     }
   ],
   "name": "ng2-i18next",
