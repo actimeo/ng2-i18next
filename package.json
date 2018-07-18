@@ -33,5 +33,6 @@
   "scripts": {
     "prepublish": "npm install --ignore-scripts && typings install && tsc"
   },
+  "typings": "ng2-i18next.d.ts",
   "version": "0.1.7"
 }
