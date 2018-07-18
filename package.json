@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "typings": "*",
     "@angular/core": "6.0.9",
     "i18next": "^9.0.0",
     "i18next-browser-languagedetector": "^2.2.0",
@@ -33,6 +34,5 @@
   "scripts": {
     "prepublish": "npm install --ignore-scripts && typings install && tsc"
   },
-  "typings": "ng2-i18next.d.ts",
   "version": "0.1.7"
 }
