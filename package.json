@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "typings": "*",
     "@angular/core": "6.0.9",
     "i18next": "^9.0.0",
     "i18next-browser-languagedetector": "^2.2.0",
@@ -32,7 +31,7 @@
     "url": "git+https://github.com/actimeo/ng2-i18next.git"
   },
   "scripts": {
-    "prepublish": "npm install --ignore-scripts && typings install && tsc"
+    "prepublish": "npm install --ignore-scripts"
   },
-  "version": "0.1.7"
+  "version": "0.1.7-leo"
 }
