@@ -1,16 +1,19 @@
 {
   "dependencies": {
     "@angular/core": "6.0.9",
+    "@types/rx": "^4.1.1",
     "i18next": "^9.0.0",
     "i18next-browser-languagedetector": "^2.2.0",
     "i18next-xhr-backend": "^1.4.3",
     "rxjs": "6.2.2",
+    "rxjs-compat": "^6.2.2",
     "zone.js": "0.8.26"
   },
   "main": "ng2-i18next.js",
   "typings": "ng2-i18next.d.ts",
   "description": "use i18next with Angular2",
   "devDependencies": {
+    "@types/node": "^10.5.2",
     "typescript": "^2.7.2"
   },
   "license": "MIT",
@@ -24,14 +27,14 @@
       "name": "Léopold Lieb"
     }
   ],
-  "name": "ng2-i18next-2",
+  "name": "ng2-i18next",
   "peerDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/actimeo/ng2-i18next.git"
   },
   "scripts": {
-    "prepublish": "npm install --ignore-scripts"
+    "prepublish": "npm install --ignore-scripts && tsc"
   },
   "version": "0.1.7-leo"
 }
