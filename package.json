@@ -27,7 +27,7 @@
       "name": "Léopold Lieb"
     }
   ],
-  "name": "ng2-i18next",
+  "name": "ng2-i18next-2",
   "peerDependencies": {},
   "repository": {
     "type": "git",
@@ -36,5 +36,5 @@
   "scripts": {
     "prepublish": "npm install --ignore-scripts && tsc"
   },
-  "version": "0.1.7-leo"
+  "version": "0.1.8-leo"
 }
