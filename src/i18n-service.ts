@@ -21,7 +21,7 @@ export class I18nService {
   constructor(private config: I18nServiceConfig) {
     this.init = false;
     this.i18n = i18next;
-    this.whenReady$ = new Observable(observer => {
+    this.whenReady$ = new Observable<boolean>(observer => {
       this.whenReadyObserver = observer;
       let i18nextUse = config.use;
       if (config.use) {

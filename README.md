@@ -12,7 +12,7 @@ A demo is available on [github: ng2-i18next-demo-rc3](https://github.com/actimeo
 
 
 ### 1. install npm package
-    npm install ng2-i18next --save
+    npm install ng2-i18next-2 --save
 
 This will also install three i18next packages (i18next, i18next-browser-languagedetector and i18next-xhr-backend), necessary for this module to work.
 
